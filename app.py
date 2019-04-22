@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = 'supersecrethehe'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cupcakes'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 connect_db(app)
@@ -24,7 +24,7 @@ def list_cupcakes():
     all_cupcakes = Cupcake.query.all()
     serialized_cupcakes = [cupcake.serialize() for cupcake in all_cupcakes]
     
-    return jsonify(serialized_cupcakes)
+    return jsonify(cupcakes=serialized_cupcakes)
 
 
 @app.route('/cupcakes', methods=["POST"])
@@ -35,7 +35,7 @@ def add_cupcake():
     db.session.add(cupcake)
     db.session.commit()
 
-    return jsonify(cupcake.serialize())
+    return jsonify(cupcake=cupcake.serialize())
 
 
 @app.route('/cupcakes/<int:cupcake_id>', methods=["PATCH"])
