@@ -1,10 +1,9 @@
-from app import app, db
-from models import Cupcake
+from app import app
+from models import db, connect_db, Cupcake
 import unittest
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cupcakes-app-test'
 connect_db(app)
-
 
 class AppTestCase(unittest.TestCase):
 

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, request
+from flask import Flask, jsonify, redirect, request, render_template
 from models import db, connect_db, Cupcake
 from flask_debugtoolbar import DebugToolbarExtension
 
@@ -16,7 +16,7 @@ db.create_all()
 
 @app.route('/')
 def index():
-    return redirect('/cupcakes')
+    return render_template('index.html')
 
 
 @app.route('/cupcakes')
@@ -26,10 +26,22 @@ def list_cupcakes():
     
     return jsonify(cupcakes=serialized_cupcakes)
 
+@app.route('/search')
+def search_cupcakes():
+
+    search = request.args.get('search').lower() if request.args.get('search') else None
+
+    cupcakes = Cupcake.query.filter(Cupcake.flavor.like(f"%{search}%")).all()
+    print('asdfasdfdsffasdf',cupcakes)
+    serialized_cupcakes = [cupcake.serialize() for cupcake in cupcakes]
+    
+    return jsonify(cupcakes=serialized_cupcakes)
+
 
 @app.route('/cupcakes', methods=["POST"])
 def add_cupcake():
     new_cupcake = request.json
+    new_cupcake['image'] = new_cupcake['image'] or None
     cupcake = Cupcake(**new_cupcake)
 
     db.session.add(cupcake)

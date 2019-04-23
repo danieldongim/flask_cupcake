@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Cupcakes</title>
+</head>
+
+<body>
+
+    <div class='container'>
+
+        <form id='cup-cake-form' class='w-80'>
+            <div class="row">
+                <div class="col">
+                    <input id='flavor' type="text" class="form-control" placeholder="flavor" required>
+                </div>
+                <div class="col">
+                    <input id='size' type="text" class="form-control" placeholder="size" required>
+                </div>
+                <div class="col">
+                    <input id='rating' type="number" class="form-control" placeholder="rating" required>
+                </div>
+                <div class="col">
+                    <input id='image' type="text" class="form-control" placeholder="image URL">
+                </div>
+                <button type='submit' id='form-submit' class='btn btn-primary'>Submit</button>
+            </div>
+        </form>
+
+        <br>
+
+        <form id='search-form' class='w-100'>
+            <input type="text" id='search-value' placeholder="search-term">
+            <span><button class='btn btn-info'> Search </button></span>
+        </form>
+        <a href="/"><button>Show All Cupcakes</button></a>
+
+        <ul id='cup-cake-list' class="list-group">
+        </ul>
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.0.js"
+        integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
